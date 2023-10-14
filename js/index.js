@@ -77,20 +77,62 @@ function agregarAlCarrito(){
 }
 
 
-function eliminarImporteDelCarrito(importe) {
 
-    if(importe > total){
-        alert("El importe ingresado es mayor al total, por favor ingrese un monto menor.")
-    }else{
-        total = total - importe;
-        return total;
-    }
+function quitarDeCarrito() {
+   
+    let codigoProducto = pedirProducto();
+
+    while(codigoProducto !== 0){
+
+// Controlamos la operacion que elije el usuario
+
+        switch(codigoProducto){
+            case 1:
+                totalResta += 1000;
+                break;
+
+            case 2:
+                totalResta += 2000;
+                break;
+
+            case 3:
+                totalResta += 3000;
+                break;
+
+            case 4:
+                totalResta += 4000;
+                break;
+
+            case 5:
+                opcion = pedirOpcion();
+                break;
+
+            default:
+                alert("Usted ingresó un valor incorrecto");
+        }
+        codigoProducto = pedirProducto();
 }
+
+if(totalResta > total){
+    alert("El importe ingresado es mayor al total, por favor ingrese un monto menor.")
+}else{
+    total = total - totalResta;
+    alert("el monto quedo en " + total);
+}
+
+}
+    
+
 
 
 function valorTotalCarrito() {
 // enviamos el valor total de la compra
+if(total > 0){
     alert("Los productos ingresados son: " + codigoDeProducto + ", el total de su carrito es de $ " + total );
+}else{
+    alert("Usted no posee elementos en el carrito, intente nuevamente");
+    pedirOpcion();
+}
 
 }
 
@@ -110,8 +152,9 @@ function terminarCompra(){
         alert("Muchas gracias por su compra!");
     }else{
         alert("Usted no posee elementos en el carrito.");
-        alert(pedirOpcion());
+        pedirOpcion();
     }
+    
 }
 
 
@@ -133,6 +176,7 @@ function pedirOpcion(){
 
 let codigoDeProducto = "";
 let total = 0;
+let totalResta = 0;
 
 
 // Inicio del Programa
