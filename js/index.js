@@ -17,6 +17,10 @@ function carrito(opcion){
                 quitarDeCarrito();
                 break;
 
+            case 4:
+                terminarCompra();
+                break;
+
             default:
                 alert("Ingresó un número incorrecto");
                 break;
@@ -29,7 +33,6 @@ function carrito(opcion){
      alert("Gracias por utilizar nuestros servicios.");
 
 }
-
 
 
 function agregarAlCarrito(){
@@ -73,44 +76,64 @@ function agregarAlCarrito(){
     
 }
 
+
 function eliminarImporteDelCarrito(importe) {
 
     if(importe > total){
         alert("El importe ingresado es mayor al total, por favor ingrese un monto menor.")
     }else{
         total = total - importe;
+        return total;
     }
 }
 
+
 function valorTotalCarrito() {
 // enviamos el valor total de la compra
-    alert("Los productos ingresados son: " + codigoDeProducto + ", el total de su carrito es de " + total );
+    alert("Los productos ingresados son: " + codigoDeProducto + ", el total de su carrito es de $ " + total );
 
 }
 
-function detalleProducto(codigoProducto){
 
+function detalleProducto(codigoProducto){
+//con esta condicion concatenamos el detalle del producto
    if(codigoDeProducto !== "") {
        codigoDeProducto += ", ";
    }
    codigoDeProducto += codigoProducto
 }
 
+
+function terminarCompra(){
+    if(total > 0){
+        alert("El saldo a pagar es de : $ " + total);
+        alert("Muchas gracias por su compra!");
+    }else{
+        alert("Usted no posee elementos en el carrito.");
+        alert(pedirOpcion());
+    }
+}
+
+
 function pedirProducto(){
 
-    return parseInt(prompt("Ingrese el detalle del producto que desee: \n 1. Producto 1 $1000. \n 2. Producto 2 $2000. \n 3. Producto 3 valor $3000. \n 4. Producto 4 $4000. \n 0. Ingrese 0 para volver al menu anterior. "));
+    return parseInt(prompt("Ingrese el detalle del producto que desee: \n 1. Producto 1 $1000. \n 2. Producto 2 $2000. \n 3. Producto 3 $3000. \n 4. Producto 4 $4000. \n 0. Ingrese 0 para volver al menu anterior. "));
 
     }
 
+
 function pedirOpcion(){
 
-    return parseInt(prompt("Ingrese la opción que desea: \n 1. Agregar al carrito. \n 2. Detalle total de la compra. \n 3 Eliminar del carrito.  \n 0. Salir  "));
+    return parseInt(prompt("Ingrese la opción que desea: \n 1. Agregar al carrito. \n 2. Detalle total de la compra. \n 3 Eliminar del carrito. \n 4 Finalizar compra. \n 0. Salir  "));
 
 }
+
+
 // Variables
 
 let codigoDeProducto = "";
 let total = 0;
+
 
 // Inicio del Programa
 
