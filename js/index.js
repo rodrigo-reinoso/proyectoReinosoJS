@@ -1,5 +1,3 @@
-// Funciones
-
 function carrito(opcion) {
   while (opcion !== 0) {
     switch (opcion) {
@@ -69,13 +67,15 @@ function agregarAlCarrito() {
   }
 }
 
-function totalResta(monto){
-    if (monto > total) {
-        alert("El importe ingresado es mayor al total, por favor ingrese un monto menor.");
-      } else {
-        total = total - monto;
-        alert("el monto quedo en " + total);
-      }
+function totalResta(monto) {
+  if (monto > total) {
+    alert(
+      "El importe ingresado es mayor al total, por favor ingrese un monto menor."
+    );
+  } else {
+    total = total - monto;
+    alert("El monto quedó en " + total);
+  }
 }
 
 function quitarDeCarrito() {
@@ -101,12 +101,14 @@ function quitarDeCarrito() {
         totalResta(4000);
         break;
 
+      case 0:
+        break;
+
       default:
         alert("Usted ingresó un valor incorrecto");
     }
     codigoProducto = pedirProducto();
   }
-
 }
 
 function valorTotalCarrito() {
@@ -143,11 +145,19 @@ function terminarCompra() {
 }
 
 function pedirProducto() {
-  return parseInt(prompt("Ingrese el detalle del producto que desee: \n 1. Producto 1 $1000. \n 2. Producto 2 $2000. \n 3. Producto 3 $3000. \n 4. Producto 4 $4000. \n 0. Ingrese 0 para volver al menu anterior. "));
+  return parseInt(
+    prompt(
+      "Ingrese el detalle del producto que desee: \n 1. Producto 1 $1000. \n 2. Producto 2 $2000. \n 3. Producto 3 $3000. \n 4. Producto 4 $4000. \n 0. Ingrese 0 para volver al menu anterior. "
+    )
+  );
 }
 
 function pedirOpcion() {
-  return parseInt(prompt("Ingrese la opción que desea: \n 1. Agregar al carrito. \n 2. Detalle total de la compra. \n 3 Eliminar del carrito. \n 4 Finalizar compra. \n 0. Salir  "));
+  return parseInt(
+    prompt(
+      "Ingrese la opción que desea: \n 1. Agregar al carrito. \n 2. Detalle total de la compra. \n 3 Eliminar del carrito. \n 4 Finalizar compra. \n 0. Salir  "
+    )
+  );
 }
 
 // Variables
