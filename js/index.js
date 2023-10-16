@@ -1,3 +1,6 @@
+// Funciones
+
+//mostramos las opciones para que ingrese el usuario atraves de un switch.
 function carrito(opcion) {
   while (opcion !== 0) {
     switch (opcion) {
@@ -24,11 +27,13 @@ function carrito(opcion) {
 
     opcion = pedirOpcion();
   }
-
+  if( !terminando){
   terminarCompra();
   alert("Gracias por utilizar nuestros servicios.");
+  }
 }
 
+//accede a las opciones de producto y agrega los datos en 2 variables total y codigoProducto.
 function agregarAlCarrito() {
   let codigoProducto = pedirProducto();
 
@@ -67,17 +72,7 @@ function agregarAlCarrito() {
   }
 }
 
-function totalResta(monto) {
-  if (monto > total) {
-    alert(
-      "El importe ingresado es mayor al total, por favor ingrese un monto menor."
-    );
-  } else {
-    total = total - monto;
-    alert("El monto quedó en " + total);
-  }
-}
-
+//accede a las opciones de productos y llama a la funcion totalResta a traves de un switch y agrega los importes a restar. 
 function quitarDeCarrito() {
   let codigoProducto = pedirProducto();
 
@@ -111,13 +106,25 @@ function quitarDeCarrito() {
   }
 }
 
+//verifica que el importe no sea mayor que el total que se agrego en carrito.
+function totalResta(monto) {
+  if (monto > total) {
+    alert(
+      "El importe ingresado es mayor al total, por favor ingrese un monto menor."
+    );
+  } else {
+    total = total - monto;
+    alert("El monto quedó en " + total);
+  }
+}
+
+//enviamos el valor total de la compra siempre que sea mayor que 0 sino lo envia nuevamente al menu.
 function valorTotalCarrito() {
-  // enviamos el valor total de la compra
   if (total > 0) {
     alert(
       "Los productos ingresados son: " +
         codigoDeProducto +
-        ", el total de su carrito es de $ " +
+        ", el total de su carrito es de \n $ " +
         total
     );
   } else {
@@ -126,28 +133,34 @@ function valorTotalCarrito() {
   }
 }
 
+//con esta condicion concatenamos el detalle del producto.
 function detalleProducto(codigoProducto) {
-  //con esta condicion concatenamos el detalle del producto
   if (codigoDeProducto !== "") {
     codigoDeProducto += ", ";
   }
   codigoDeProducto += codigoProducto;
 }
 
+//con esta condicion mostramos el saldo a pagar y un saludo, sino lo envia al menu.
 function terminarCompra() {
   if (total > 0) {
-    alert("El saldo a pagar es de : $ " + total);
+    alert("El saldo a pagar es de : \n $" +total);
     alert("Muchas gracias por su compra!");
+    terminando = true;
+    return;
+   
   } else {
     alert("Usted no posee elementos en el carrito.");
     pedirOpcion();
   }
+  
 }
 
+// estas funciones se utilizan para no repetir codigo -- pedirProducto -- pedirOpcion
 function pedirProducto() {
   return parseInt(
     prompt(
-      "Ingrese el detalle del producto que desee: \n 1. Producto 1 $1000. \n 2. Producto 2 $2000. \n 3. Producto 3 $3000. \n 4. Producto 4 $4000. \n 0. Ingrese 0 para volver al menu anterior. "
+      "Ingrese el detalle del producto que desee: \n 1. Producto 1 $1000. \n 2. Producto 2 $2000. \n 3. Producto 3 $3000. \n 4. Producto 4 $4000. \n 0. Volver al menu anterior. "
     )
   );
 }
@@ -164,7 +177,7 @@ function pedirOpcion() {
 
 let codigoDeProducto = "";
 let total = 0;
-let totalResta = 0;
+
 
 // Inicio del Programa
 
