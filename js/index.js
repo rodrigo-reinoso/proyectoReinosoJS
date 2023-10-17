@@ -16,21 +16,19 @@ function carrito(opcion) {
         quitarDeCarrito();
         break;
 
-      case 4:
-        terminarCompra();
-        break;
+      //case 4:
+      //  terminarCompra();
+      //  break;
 
       default:
         alert("Ingresó un número incorrecto");
         break;
     }
-
     opcion = pedirOpcion();
   }
-  if( !terminando){
+
   terminarCompra();
   alert("Gracias por utilizar nuestros servicios.");
-  }
 }
 
 //accede a las opciones de producto y agrega los datos en 2 variables total y codigoProducto.
@@ -146,14 +144,11 @@ function terminarCompra() {
   if (total > 0) {
     alert("El saldo a pagar es de : \n $" +total);
     alert("Muchas gracias por su compra!");
-    terminando = true;
     return;
    
   } else {
     alert("Usted no posee elementos en el carrito.");
-    pedirOpcion();
   }
-  
 }
 
 // estas funciones se utilizan para no repetir codigo -- pedirProducto -- pedirOpcion
@@ -168,7 +163,7 @@ function pedirProducto() {
 function pedirOpcion() {
   return parseInt(
     prompt(
-      "Ingrese la opción que desea: \n 1. Agregar al carrito. \n 2. Detalle total de la compra. \n 3 Eliminar del carrito. \n 4 Finalizar compra. \n 0. Salir  "
+      "Ingrese la opción que desea: \n 1. Agregar al carrito. \n 2. Detalle total de la compra. \n 3 Eliminar del carrito. \n 0. Terminar compra  "
     )
   );
 }
@@ -183,3 +178,5 @@ let total = 0;
 
 let opcion = pedirOpcion();
 carrito(opcion);
+
+// Fin del programa
